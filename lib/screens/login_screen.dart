@@ -119,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                                     style: Get.textTheme.bodySmall,
                                   ),
                                   TextButton(
-                                    child: Text("حساب جديد"),
+                                    child: const Text("حساب جديد"),
                                     onPressed: () {
                                       Get.toNamed("register");
                                     },

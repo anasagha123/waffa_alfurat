@@ -55,7 +55,7 @@ class AboutusScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ContactUsCard(
+                const ContactUsCard(
                   label: "facebook",
                   color: Colors.blue,
                   iconData: FontAwesomeIcons.facebook,
@@ -64,7 +64,7 @@ class AboutusScreen extends StatelessWidget {
                   scheme: "https",
                 ),
                 SizedBox(width: Get.width * 0.1),
-                ContactUsCard(
+                const ContactUsCard(
                     label: "whatsapp",
                     color: Colors.green,
                     iconData: FontAwesomeIcons.whatsapp,
@@ -76,7 +76,7 @@ class AboutusScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ContactUsCard(
+                const ContactUsCard(
                   label: "07851000172",
                   color: Colors.red,
                   iconData: Icons.phone_outlined,
@@ -84,7 +84,7 @@ class AboutusScreen extends StatelessWidget {
                   scheme: "tel",
                 ),
                 SizedBox(width: Get.width * 0.1),
-                ContactUsCard(
+                const ContactUsCard(
                   label: "location",
                   color: Colors.teal,
                   iconData: FontAwesomeIcons.mapLocation,

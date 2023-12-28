@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Container(
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: Get.height * 0.05,
                     ),
-                    HomeScreenBanner(images: [1, 2, 3, 4]),
+                    const HomeScreenBanner(images: [1, 2, 3, 4]),
                     SizedBox(
                       height: Get.height * 0.05,
                     ),
@@ -166,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                     "اهلا بك في شركة وفاء الفرات",
                     style: Get.textTheme.bodyLarge,
                   ),
-                  HomeScreenBanner(images: [1, 2, 3, 4]),
+                  const HomeScreenBanner(images: [1, 2, 3, 4]),
                   SizedBox(
                     height: Get.height * 0.05,
                   ),
@@ -268,7 +268,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
+                  const Column(
                     children: [
                       AgentCard(),
                       AgentCard(),
