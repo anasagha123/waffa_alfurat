@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:waffat_alfurat/components/mini_agent_card.dart';
+import 'package:waffat_alfurat/components/agnecy_card.dart';
 import 'package:waffat_alfurat/components/my_drawer.dart';
 
 class AgentsCorpScreen extends StatelessWidget {
@@ -20,8 +20,7 @@ class AgentsCorpScreen extends StatelessWidget {
             childAspectRatio: 0.8,
           ),
           itemCount: 5,
-          itemBuilder: (BuildContext context, int index) =>
-              const MiniAgentCard(),
+          itemBuilder: (BuildContext context, int index) => const AgnecyCard(),
         ),
       ),
     );

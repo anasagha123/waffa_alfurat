@@ -18,7 +18,7 @@ class UserTypeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                UserController.setUserType("agent");
+                UserController.userType = UserType.agent;
                 Get.toNamed("login");
               },
               style: const ButtonStyle(
@@ -33,8 +33,7 @@ class UserTypeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                UserController.setUserType("customer");
-
+                UserController.userType = UserType.customer;
                 Get.toNamed("login");
               },
               style: const ButtonStyle(

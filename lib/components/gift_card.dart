@@ -10,6 +10,7 @@ class GiftCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: BorderRadius.circular(10),
@@ -17,18 +18,22 @@ class GiftCard extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: Get.height * 0.13,
-            child: Image.asset(
-              gift.image!,
-              width: Get.width * 0.3,
+            height: Get.height * 0.15,
+            width: Get.width * 0.4,
+            child: Image.network(
+              "http://wafaaalfurat.store/storage/${gift.image}",
+              fit: BoxFit.cover,
             ),
           ),
+          Divider(height: Get.height * 0.008),
           Text(
             "${gift.title}",
             style: Get.textTheme.bodySmall,
+            textAlign: TextAlign.center,
           ),
+          SizedBox(height: Get.height * 0.01),
           Text(
-            "${gift.points}",
+            "${gift.points} نقطة",
             style: Get.textTheme.bodySmall,
           ),
         ],

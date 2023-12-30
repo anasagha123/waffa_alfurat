@@ -34,7 +34,7 @@ class DioHelper {
         );
         return Response(requestOptions: RequestOptions());
       });
-    } on DioException catch (_) {
+    } catch (_) {
       showSnackBar(
         title: "خطأ",
         message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
@@ -61,7 +61,7 @@ class DioHelper {
             title: "خطأ");
         return Response(requestOptions: RequestOptions());
       });
-    } on DioException catch (_) {
+    } catch (_) {
       showSnackBar(
         title: "خطأ",
         message: "حدث خطأ في التصال الرجاء اعادة المحاولة",
@@ -86,7 +86,7 @@ class DioHelper {
             title: "خطأ");
         return Response(requestOptions: RequestOptions());
       });
-    } on DioException catch (_) {
+    } catch (_) {
       showSnackBar(
         title: "خطأ",
         message: "حدث خطأ في التصال الرجاء اعادة المحاولة",

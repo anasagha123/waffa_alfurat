@@ -6,11 +6,16 @@ class DefaultTextFormField extends StatelessWidget {
   final String hintText;
   final TextEditingController textEditingController;
   final bool isObscured;
+  final String? Function(String?)? validator;
+  final TextInputType textInputType;
+
   const DefaultTextFormField({
     super.key,
     required this.iconData,
     required this.hintText,
     required this.textEditingController,
+    this.validator,
+    this.textInputType = TextInputType.text,
     this.isObscured = false,
   });
 
@@ -19,8 +24,10 @@ class DefaultTextFormField extends StatelessWidget {
     return SizedBox(
       height: Get.height * 0.06,
       child: TextFormField(
+        validator: validator,
         obscureText: isObscured,
         controller: textEditingController,
+        keyboardType: textInputType,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: Get.textTheme.bodyMedium!.copyWith(color: Colors.grey),

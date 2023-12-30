@@ -7,10 +7,12 @@ class DefaultTextFormField2 extends StatelessWidget {
   final bool isObsecure;
   final TextDirection textDirection;
   final TextEditingController textEditingController;
+  final String? Function(String?)? validator;
   const DefaultTextFormField2(
       {super.key,
       required this.hintText,
       required this.textEditingController,
+      this.validator,
       this.textInputType = TextInputType.text,
       this.isObsecure = false,
       this.textDirection = TextDirection.rtl});
@@ -21,6 +23,8 @@ class DefaultTextFormField2 extends StatelessWidget {
       width: Get.width * 0.9,
       height: Get.height * 0.06,
       child: TextFormField(
+        controller: textEditingController,
+        validator: validator,
         keyboardType: textInputType,
         obscureText: isObsecure,
         textDirection: textDirection,

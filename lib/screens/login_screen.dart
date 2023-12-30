@@ -76,6 +76,7 @@ class LoginScreen extends StatelessWidget {
                                 iconData: Icons.phone,
                                 hintText: "XXXXXXXXXX",
                                 textEditingController: screenController.phone,
+                                textInputType: TextInputType.phone,
                               ),
                               SizedBox(
                                 height: Get.height * 0.02,
@@ -95,18 +96,29 @@ class LoginScreen extends StatelessWidget {
                                 height: Get.height * 0.05,
                               ),
                               Center(
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        Get.theme.colorScheme.primary),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        Get.width * 0.8, Get.height * 0.06)),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "تسجيل الدخول",
-                                    style: Get.textTheme.bodyMedium!.copyWith(
-                                      color: Get.theme.colorScheme.onPrimary,
+                                child: GetBuilder<LoginScreenController>(
+                                  builder: (controller) => Visibility(
+                                    visible: !controller.isloading,
+                                    replacement:
+                                        const CircularProgressIndicator(),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                Get.theme.colorScheme.primary),
+                                        minimumSize: MaterialStatePropertyAll(
+                                            Size(Get.width * 0.8,
+                                                Get.height * 0.06)),
+                                      ),
+                                      onPressed: controller.login,
+                                      child: Text(
+                                        "تسجيل الدخول",
+                                        style:
+                                            Get.textTheme.bodyMedium!.copyWith(
+                                          color:
+                                              Get.theme.colorScheme.onPrimary,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -119,10 +131,8 @@ class LoginScreen extends StatelessWidget {
                                     style: Get.textTheme.bodySmall,
                                   ),
                                   TextButton(
+                                    onPressed: screenController.gotoRegister,
                                     child: const Text("حساب جديد"),
-                                    onPressed: () {
-                                      Get.toNamed("register");
-                                    },
                                   ),
                                 ],
                               ),

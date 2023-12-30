@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:waffat_alfurat/components/agent_card.dart';
+import 'package:waffat_alfurat/components/agnecy_card.dart';
 import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/components/gift_card.dart';
 import 'package:waffat_alfurat/components/home_screen_banner.dart';
-import 'package:waffat_alfurat/components/products_card.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller.dart';
-import 'package:waffat_alfurat/models/gift_model.dart';
-import 'package:waffat_alfurat/models/product_model.dart';
 
 class HomeScreen extends StatelessWidget {
   final ScrollController scrollController = ScrollController();
@@ -34,14 +31,9 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.bookmark_outline,
-              color: Get.theme.colorScheme.onPrimary,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("invoice");
+            },
             icon: Icon(
               Icons.wallet_giftcard,
               color: Get.theme.colorScheme.onPrimary,
@@ -53,7 +45,14 @@ class HomeScreen extends StatelessWidget {
               Icons.notifications_outlined,
               color: Get.theme.colorScheme.onPrimary,
             ),
-          )
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.refresh_rounded,
+              color: Get.theme.colorScheme.onPrimary,
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -73,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: Get.height * 0.05,
                     ),
-                    const HomeScreenBanner(images: [1, 2, 3, 4]),
+                    const HomeScreenBanner(images: [1]),
                     SizedBox(
                       height: Get.height * 0.05,
                     ),
@@ -88,30 +87,8 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          width: Get.width * 0.3,
-                          height: Get.height * 0.015,
-                        ),
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: Get.width * 0.03,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.05,
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.2,
-                      child: ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index) => Container(
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          width: Get.width * 0.3,
-                          height: Get.height * 0.015,
+                          height: Get.height * 0.2,
+                          width: Get.width * 0.25,
                         ),
                         separatorBuilder: (context, index) => SizedBox(
                           width: Get.width * 0.03,
@@ -174,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "الوكالات والمنتجات",
+                        "الوكالات",
                         style: Get.textTheme.bodyLarge!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
@@ -195,52 +172,7 @@ class HomeScreen extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
-                      itemBuilder: (context, index) => ProductCard(
-                        product: Product(
-                            image: "assets/images/waffa_logo.png",
-                            title: "product",
-                            price: "144"),
-                      ),
-                      separatorBuilder: (context, index) => SizedBox(
-                        width: Get.width * 0.03,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.05,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "الهدايا",
-                        style: Get.textTheme.bodyLarge!
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "عرض المزيد",
-                          style: Get.textTheme.bodySmall!.copyWith(
-                            color: Get.theme.colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.2,
-                    child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) => GiftCard(
-                        gift: Gift(
-                          image: "assets/images/waffa_logo.png",
-                          title: "gift",
-                          points: 20,
-                        ),
-                      ),
+                      itemBuilder: (context, index) => AgnecyCard(),
                       separatorBuilder: (context, index) => SizedBox(
                         width: Get.width * 0.03,
                       ),

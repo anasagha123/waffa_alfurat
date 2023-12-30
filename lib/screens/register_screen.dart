@@ -72,6 +72,7 @@ class RegisterScreen extends StatelessWidget {
                                 hintText: "ادخل الاسم الكامل",
                                 textInputType: TextInputType.name,
                                 textEditingController: screenController.name,
+                                validator: screenController.isFieldEmpty,
                               ),
                               SizedBox(
                                 height: Get.height * 0.02,
@@ -85,9 +86,19 @@ class RegisterScreen extends StatelessWidget {
                                 textInputType: TextInputType.number,
                                 textDirection: TextDirection.ltr,
                                 textEditingController: screenController.phone,
+                                validator: screenController.phoneValidation,
                               ),
                               SizedBox(
                                 height: Get.height * 0.02,
+                              ),
+                              const Text("العنوان"),
+                              SizedBox(
+                                height: Get.height * 0.005,
+                              ),
+                              DefaultTextFormField2(
+                                hintText: "ادخل العنوان",
+                                textEditingController: screenController.address,
+                                validator: screenController.isFieldEmpty,
                               ),
                               const Text("كلمة المرور"),
                               SizedBox(
@@ -99,6 +110,7 @@ class RegisterScreen extends StatelessWidget {
                                 textInputType: TextInputType.visiblePassword,
                                 textEditingController:
                                     screenController.password,
+                                validator: screenController.passwordValidation,
                               ),
                               SizedBox(
                                 height: Get.height * 0.02,
@@ -112,23 +124,35 @@ class RegisterScreen extends StatelessWidget {
                                 isObsecure: true,
                                 textEditingController:
                                     screenController.repeatPassword,
+                                validator: screenController.passwordValidation,
                               ),
                               SizedBox(
                                 height: Get.height * 0.05,
                               ),
                               Center(
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        Get.theme.colorScheme.primary),
-                                    minimumSize: MaterialStatePropertyAll(Size(
-                                        Get.width * 0.8, Get.height * 0.06)),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "انشاء الحساب",
-                                    style: Get.textTheme.bodyMedium!.copyWith(
-                                      color: Get.theme.colorScheme.onPrimary,
+                                child: GetBuilder<RegisterScreenController>(
+                                  builder: (controller) => Visibility(
+                                    visible: !controller.isloading,
+                                    replacement:
+                                        const CircularProgressIndicator(),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                Get.theme.colorScheme.primary),
+                                        minimumSize: MaterialStatePropertyAll(
+                                            Size(Get.width * 0.8,
+                                                Get.height * 0.06)),
+                                      ),
+                                      onPressed: controller.register,
+                                      child: Text(
+                                        "انشاء الحساب",
+                                        style:
+                                            Get.textTheme.bodyMedium!.copyWith(
+                                          color:
+                                              Get.theme.colorScheme.onPrimary,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

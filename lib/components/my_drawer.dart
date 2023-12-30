@@ -26,14 +26,20 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             SizedBox(height: Get.height * 0.02),
-            MyListTile(
-              title: "الحساب الشخصي",
-              iconData: Icons.person_outline,
-              onTap: () {
-                Get.offAllNamed("profile");
-              },
-            ),
-            SizedBox(height: Get.height * 0.02),
+            UserController.userType != UserType.visitor
+                ? Column(
+                    children: [
+                      MyListTile(
+                        title: "الحساب الشخصي",
+                        iconData: Icons.person_outline,
+                        onTap: () {
+                          Get.offAllNamed("profile");
+                        },
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                    ],
+                  )
+                : const SizedBox(),
             MyListTile(
               title: "المنتجات",
               iconData: FontAwesomeIcons.cartShopping,
@@ -52,7 +58,7 @@ class MyDrawer extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             MyListTile(
               title: "الوكلاء",
-              iconData: Icons.people_rounded,
+              iconData: Icons.assignment_ind_outlined,
               onTap: () {
                 Get.offAllNamed("agents");
               },

@@ -13,7 +13,7 @@ class Agent {
     this.points,
   });
 
-  Agent.fromJson({required Map<String, dynamic> json}) {
+  Agent.fromJson(Map<String, dynamic> json) {
     id = json["id"];
     name = json["name"];
     phone = json["phone"];

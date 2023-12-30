@@ -12,7 +12,7 @@ class Customer {
     this.points,
   });
 
-  Customer.fromJson({required Map<String, dynamic> json}) {
+  Customer.fromJson(Map<String, dynamic> json) {
     id = json["id"];
     name = json["name"];
     address = json["address"];

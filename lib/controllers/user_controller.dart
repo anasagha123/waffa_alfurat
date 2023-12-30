@@ -15,18 +15,19 @@ class UserController extends GetxController {
 
   static initSharedPrefrences() async {
     sharedPreferences = await SharedPreferences.getInstance();
+    getUser();
   }
 
-  static saveUser({required Map<String, dynamic> json}) {
+  static setUser(Map<String, dynamic> json) {
     switch (userType) {
       case UserType.customer:
         {
-          customer = Customer.fromJson(json: json["customer"]);
+          customer = Customer.fromJson(json["customer"]);
           setCustomer();
         }
       case UserType.agent:
         {
-          agent = Agent.fromJson(json: json["agent"]);
+          agent = Agent.fromJson(json["agent"]);
           setAgent();
         }
       default:
@@ -51,7 +52,21 @@ class UserController extends GetxController {
   }
 
   static void getUserType() {
-    String val = sharedPreferences.getString("userType")!;
+    String val = sharedPreferences.getString("userType") ?? "none";
+    switch (val) {
+      case "agent":
+        userType = UserType.agent;
+      case "customer":
+        userType = UserType.customer;
+      case "visitor":
+        userType = UserType.visitor;
+      default:
+        userType = UserType.none;
+    }
+  }
+
+  static void setUserType(String val) {
+    sharedPreferences.setString("userType", val);
     switch (val) {
       case "agent":
         userType = UserType.agent;
@@ -66,10 +81,6 @@ class UserController extends GetxController {
     }
   }
 
-  static void setUserType(String val) {
-    sharedPreferences.setString("userType", val);
-  }
-
   static void getUser() {
     getUserType();
     switch (userType) {
@@ -77,7 +88,7 @@ class UserController extends GetxController {
         getCustomer();
       case UserType.agent:
         getAgent();
-      default:
+      case UserType.visitor || UserType.none:
         break;
     }
   }

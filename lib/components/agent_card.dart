@@ -15,58 +15,51 @@ class AgentCard extends StatelessWidget {
         ),
         height: Get.height * 0.3,
         width: Get.width * 0.9,
-        child: Stack(
+        child: Column(
           children: [
-            Column(
-              children: [
-                Image.asset(
-                  "assets/images/waffa_logo.png",
-                  height: Get.height * 0.2,
-                ),
-                const Divider(
-                  color: Colors.black,
-                ),
-                SizedBox(
-                  height: Get.height * 0.07,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "اسم الوكيل",
-                        style: Get.textTheme.bodySmall,
-                      ),
-                      SizedBox(
-                        width: Get.width * 0.3,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(
-                              Icons.phone_outlined,
-                            ),
-                            Icon(
-                              Icons.chat_outlined,
-                            ),
-                            Icon(Icons.menu)
-                          ],
-                        ),
-                      )
-                    ],
+            Image.asset(
+              "assets/images/waffa_logo.png",
+              height: Get.height * 0.2,
+            ),
+            const Divider(
+              color: Colors.black,
+            ),
+            SizedBox(
+              height: Get.height * 0.07,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "اسم الوكيل",
+                    style: Get.textTheme.bodySmall,
                   ),
-                )
-              ],
-            ),
-            Positioned(
-              top: Get.height * 0.18,
-              child: Container(
-                height: Get.height * 0.05,
-                width: Get.height * 0.05,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset("assets/images/waffa_logo.png"),
+                  SizedBox(
+                    width: Get.width * 0.3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(
+                          Icons.phone_outlined,
+                        ),
+                        Icon(
+                          Icons.chat_outlined,
+                        ),
+                        SizedBox(
+                          height: Get.height * 0.1,
+                          width: Get.width * 0.08,
+                          child: PopupMenuButton(
+                            itemBuilder: (ctx) => [
+                              PopupMenuItem(child: Text("data")),
+                              PopupMenuItem(child: Text("data")),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),
