@@ -16,8 +16,9 @@
         <action android:name="android.support.customtabs.action.CustomTabsService" />
       </intent>
     </queries>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="waffat_alfurat"
+        android:label="وفاء الفرات"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

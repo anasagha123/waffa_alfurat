@@ -58,7 +58,7 @@ class MyDrawer extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             MyListTile(
               title: "الوكلاء",
-              iconData: Icons.assignment_ind_outlined,
+              iconData: Icons.people_alt_outlined,
               onTap: () {
                 Get.offAllNamed("agents");
               },
@@ -74,7 +74,7 @@ class MyDrawer extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             MyListTile(
               title: "الوكالات",
-              iconData: Icons.favorite_outline,
+              iconData: Icons.assignment_ind_outlined,
               onTap: () {
                 Get.offAllNamed("agentscorp");
               },

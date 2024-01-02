@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:waffat_alfurat/components/my_drawer.dart';
+import 'package:waffat_alfurat/controllers/points_controller.dart';
 import 'package:waffat_alfurat/controllers/profile_screen_controller.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   final ProfileScreenController screenController =
       Get.put(ProfileScreenController());
+  final PointsController pointsController = Get.put(PointsController());
+
   ProfileScreen({super.key});
 
   @override
@@ -34,10 +38,14 @@ class ProfileScreen extends StatelessWidget {
                   const Text("رقم الهاتف"),
                   SizedBox(height: Get.height * 0.02),
                   const Text("العنوان"),
+                  SizedBox(height: Get.height * 0.02),
+                  const Text("عدد النقاط"),
                 ],
               ),
               Column(
                 children: [
+                  const Text(":"),
+                  SizedBox(height: Get.height * 0.02),
                   const Text(":"),
                   SizedBox(height: Get.height * 0.02),
                   const Text(":"),
@@ -71,6 +79,25 @@ class ProfileScreen extends StatelessWidget {
                     UserController.userType == UserType.agent
                         ? UserController.agent.address!
                         : UserController.customer.address!,
+                  ),
+                  SizedBox(height: Get.height * 0.02),
+                  GetBuilder<PointsController>(
+                    builder: (contorller) => Visibility(
+                      visible: !pointsController.isloading,
+                      replacement: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          width: Get.width * 0.15,
+                          height: Get.height * 0.02,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      child: Text(pointsController.points ?? ""),
+                    ),
                   ),
                 ],
               ),

@@ -51,9 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(backgroundColor: Colors.blue),
         textTheme: TextTheme(
-          bodySmall: TextStyle(fontSize: Get.textScaleFactor * 14),
-          bodyMedium: TextStyle(fontSize: Get.textScaleFactor * 18),
-          bodyLarge: TextStyle(fontSize: Get.textScaleFactor * 26),
+          bodySmall: TextStyle(fontSize: Get.textScaleFactor * 12),
+          bodyMedium: TextStyle(fontSize: Get.textScaleFactor * 16),
+          bodyLarge: TextStyle(fontSize: Get.textScaleFactor * 22),
         ),
       ),
     );
