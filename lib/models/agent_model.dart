@@ -4,6 +4,7 @@ class Agent {
   String? phone;
   String? address;
   int? points;
+  String? image;
 
   Agent({
     this.id,
@@ -19,5 +20,6 @@ class Agent {
     phone = json["phone"];
     address = json["address"];
     points = json["points"];
+    image = json["image"];
   }
 }

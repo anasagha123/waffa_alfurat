@@ -15,23 +15,24 @@ class InvoiceCard extends StatelessWidget {
       height: Get.height * 0.20,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
-        color: Get.theme.colorScheme.primary,
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade500,
+            offset: Offset(-10, 15),
+            blurRadius: 10,
+          ),
+        ],
       ),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Get.theme.colorScheme.secondary,
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-              ),
-              child: Center(
-                  child: Text(
-                "رقم الفاتورة : ${invoice.number}",
-                style: Get.textTheme.bodyMedium!.copyWith(color: Colors.black),
-              )),
-            ),
+            Center(
+                child: Text(
+              "رقم الفاتورة : ${invoice.number}",
+              style: Get.textTheme.bodyMedium,
+            )),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,14 +45,12 @@ class InvoiceCard extends StatelessWidget {
                       replacement: Text(
                         "الوكيل",
                         style: Get.textTheme.bodyMedium!.copyWith(
-                            color: Get.theme.colorScheme.onPrimary,
                             fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                             fontWeight: FontWeight.bold),
                       ),
                       child: Text(
                         "الكهربائي",
                         style: Get.textTheme.bodyMedium!.copyWith(
-                            color: Get.theme.colorScheme.onPrimary,
                             fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                             fontWeight: FontWeight.bold),
                       ),
@@ -60,7 +59,6 @@ class InvoiceCard extends StatelessWidget {
                         ? Text(
                             "${invoice.customer}",
                             style: Get.textTheme.bodyMedium!.copyWith(
-                              color: Get.theme.colorScheme.onPrimary,
                               fontSize:
                                   Get.textTheme.bodyMedium!.fontSize! * 0.8,
                             ),
@@ -68,7 +66,6 @@ class InvoiceCard extends StatelessWidget {
                         : Text(
                             "${invoice.agent}",
                             style: Get.textTheme.bodyMedium!.copyWith(
-                              color: Get.theme.colorScheme.onPrimary,
                               fontSize:
                                   Get.textTheme.bodyMedium!.fontSize! * 0.8,
                             ),
@@ -81,14 +78,12 @@ class InvoiceCard extends StatelessWidget {
                     Text(
                       "قيمة الفاتورة",
                       style: Get.textTheme.bodyMedium!.copyWith(
-                          color: Get.theme.colorScheme.onPrimary,
                           fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "${invoice.price} د.ع",
                       style: Get.textTheme.bodyMedium!.copyWith(
-                        color: Get.theme.colorScheme.onPrimary,
                         fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                       ),
                     ),
@@ -100,14 +95,12 @@ class InvoiceCard extends StatelessWidget {
                     Text(
                       "النقاط",
                       style: Get.textTheme.bodyMedium!.copyWith(
-                          color: Get.theme.colorScheme.onPrimary,
                           fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       invoice.points.toString(),
                       style: Get.textTheme.bodyMedium!.copyWith(
-                        color: Get.theme.colorScheme.onPrimary,
                         fontSize: Get.textTheme.bodyMedium!.fontSize! * 0.8,
                       ),
                     ),

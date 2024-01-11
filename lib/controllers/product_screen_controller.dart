@@ -22,9 +22,6 @@ class ProductScreenController extends GetxController {
       products.add(Product.fromJson(response.data[i]));
     }
 
-    print(response.data.toString());
-    print("PRODUCTS::" + products.toString());
-
     isloading = false;
     update();
   }

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreenBanner extends StatefulWidget {
-  final List images;
+  final List<String> images;
   const HomeScreenBanner({super.key, required this.images});
 
   @override
@@ -45,32 +45,26 @@ class _HomeScreenBannerState extends State<HomeScreenBanner> {
         children: [
           PageView(
             controller: pageController,
-            children: [
-              Container(
-                color: Colors.yellow,
-                child: Image.asset("assets/images/waffa_logo.png"),
-              ),
-              Container(
-                color: Colors.blue,
-                child: Image.asset("assets/images/waffa_logo.png"),
-              ),
-              Container(
-                color: Colors.red,
-                child: Image.asset("assets/images/waffa_logo.png"),
-              ),
-              Container(
-                color: Colors.green,
-                child: Image.asset("assets/images/waffa_logo.png"),
-              ),
-            ],
+            children: widget.images.isNotEmpty
+                ? [
+                    for (int i = 0; i < widget.images.length; i++)
+                      Image.asset(
+                        "assets/images/waffa_logo.png",
+                        fit: BoxFit.fill,
+                      )
+                  ]
+                : [Image.asset("assets/images/waffa_logo.png")],
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: Get.height * 0.01),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: SmoothPageIndicator(
-                count: widget.images.length,
-                controller: pageController,
+          Visibility(
+            visible: widget.images.length > 1,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: Get.height * 0.01),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: SmoothPageIndicator(
+                  count: widget.images.length,
+                  controller: pageController,
+                ),
               ),
             ),
           ),

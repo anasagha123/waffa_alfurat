@@ -12,8 +12,15 @@ class ProductCard extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        border: Border.all(),
         borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade200,
+            offset: const Offset(-10, 20),
+            blurRadius: 6,
+          ),
+        ],
       ),
       child: Column(
         children: [
@@ -22,7 +29,7 @@ class ProductCard extends StatelessWidget {
             width: Get.width * 0.45,
             child: Image.network(
               "http://wafaaalfurat.store/storage/${product.image!}",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Divider(height: Get.height * 0.008),

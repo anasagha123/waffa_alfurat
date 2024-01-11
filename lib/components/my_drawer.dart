@@ -13,7 +13,7 @@ class MyDrawer extends StatelessWidget {
       backgroundColor: Get.theme.colorScheme.primary,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: Get.height * 0.04,
+          vertical: Get.height * 0.07,
           horizontal: Get.width * 0.05,
         ),
         child: Column(
@@ -27,19 +27,21 @@ class MyDrawer extends StatelessWidget {
             ),
             SizedBox(height: Get.height * 0.02),
             UserController.userType != UserType.visitor
-                ? Column(
-                    children: [
-                      MyListTile(
-                        title: "الحساب الشخصي",
-                        iconData: Icons.person_outline,
-                        onTap: () {
-                          Get.offAllNamed("profile");
-                        },
-                      ),
-                      SizedBox(height: Get.height * 0.02),
-                    ],
+                ? MyListTile(
+                    title: "الحساب الشخصي",
+                    iconData: Icons.person_outline,
+                    onTap: () {
+                      Get.offAllNamed("profile");
+                    },
                   )
-                : const SizedBox(),
+                : MyListTile(
+                    title: "تسجيل الدخول",
+                    iconData: Icons.person_outline,
+                    onTap: () {
+                      UserController.logOut();
+                    },
+                  ),
+            SizedBox(height: Get.height * 0.02),
             MyListTile(
               title: "المنتجات",
               iconData: FontAwesomeIcons.cartShopping,
@@ -76,7 +78,7 @@ class MyDrawer extends StatelessWidget {
               title: "الوكالات",
               iconData: Icons.assignment_ind_outlined,
               onTap: () {
-                Get.offAllNamed("agentscorp");
+                Get.offAllNamed("brands");
               },
             ),
             SizedBox(height: Get.height * 0.02),
@@ -126,6 +128,7 @@ class MyListTile extends StatelessWidget {
         leading: Icon(
           iconData,
           color: color,
+          size: Get.textTheme.bodyLarge?.fontSize,
         ),
         title: Text(
           title,

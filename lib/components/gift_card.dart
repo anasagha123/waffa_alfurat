@@ -12,16 +12,23 @@ class GiftCard extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade200,
+            offset: const Offset(-10, 20),
+            blurRadius: 6,
+          ),
+        ],
       ),
       child: Column(
         children: [
           SizedBox(
-            height: Get.height * 0.15,
-            width: Get.width * 0.4,
+            height: Get.height * 0.16,
+            width: Get.width * 0.45,
             child: Image.network(
-              "http://wafaaalfurat.store/storage/${gift.image}",
+              "https://wafaaalfurat.store/storage/${gift.image}",
               fit: BoxFit.cover,
             ),
           ),

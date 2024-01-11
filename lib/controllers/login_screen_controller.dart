@@ -29,10 +29,13 @@ class LoginScreenController extends GetxController {
               "password": password.text,
             },
           );
-          UserController.agent = Agent.fromJson(response.data["agent"]);
           if (response.data["message"] == "تم تسجيل الدخول بنجاح" &&
               response.data["agent"]["active"] == "yes") {
+            UserController.agent = Agent.fromJson(response.data["agent"]);
+
             UserController.setUserType("agent");
+            UserController.setUser(response.data);
+
             showSnackBar(
               message: response.data["message"],
               state: SnackBarState.success,
@@ -44,7 +47,6 @@ class LoginScreenController extends GetxController {
               state: SnackBarState.error,
             );
           }
-
           break;
         case UserType.customer:
           response = await DioHelper.postData(
@@ -54,11 +56,13 @@ class LoginScreenController extends GetxController {
               "password": password.text,
             },
           );
-          UserController.customer =
-              Customer.fromJson(response.data["customer"]);
+
           if (response.data["message"] == "تم تسجيل الدخول بنجاح" &&
               response.data["customer"]["active"] == "yes") {
-            UserController.setUserType("agent");
+            UserController.customer =
+                Customer.fromJson(response.data["customer"]);
+            UserController.setUserType("customer");
+            UserController.setUser(response.data);
 
             showSnackBar(
               message: response.data["message"],
@@ -77,7 +81,6 @@ class LoginScreenController extends GetxController {
           break;
       }
     }
-    UserController.setUser(response.data);
     isloading = false;
     update();
   }

@@ -4,11 +4,12 @@ import 'package:waffat_alfurat/controllers/user_controller.dart';
 import 'package:waffat_alfurat/network/remote/dio_helper.dart';
 import 'package:waffat_alfurat/screens/aboutus_screen.dart';
 import 'package:waffat_alfurat/screens/agents_screen.dart';
-import 'package:waffat_alfurat/screens/agents_corp_screen.dart';
+import 'package:waffat_alfurat/screens/brands_screen.dart';
 import 'package:waffat_alfurat/screens/gifts_screen.dart';
 import 'package:waffat_alfurat/screens/home_screen.dart';
 import 'package:waffat_alfurat/screens/invoice_screen.dart';
 import 'package:waffat_alfurat/screens/login_screen.dart';
+import 'package:waffat_alfurat/screens/posts_screen.dart';
 import 'package:waffat_alfurat/screens/products_screen.dart';
 import 'package:waffat_alfurat/screens/profile_screen.dart';
 import 'package:waffat_alfurat/screens/register_screen.dart';
@@ -37,11 +38,12 @@ class MyApp extends StatelessWidget {
         "aboutus": (ctx) => const AboutusScreen(),
         "userType": (ctx) => const UserTypeScreen(),
         "profile": (ctx) => ProfileScreen(),
-        "agentscorp": (ctx) => const AgentsCorpScreen(),
-        "agents": (ctx) => const AgentsScreen(),
+        "brands": (ctx) => const BrandsScreen(),
+        "agents": (ctx) => AgentsScreen(),
         "products": (ctx) => ProductsScreen(),
         "gifts": (ctx) => GiftsScreen(),
         "invoice": (ctx) => InvoiceScreen(),
+        "posts": (ctx) => PostsScreen()
       },
       theme: ThemeData(
         fontFamily: "Cario",

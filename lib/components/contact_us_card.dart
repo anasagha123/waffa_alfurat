@@ -7,7 +7,6 @@ class ContactUsCard extends StatelessWidget {
   final String label;
   final IconData iconData;
   final String url;
-  final String scheme;
 
   const ContactUsCard({
     super.key,
@@ -15,7 +14,6 @@ class ContactUsCard extends StatelessWidget {
     required this.label,
     required this.iconData,
     required this.url,
-    required this.scheme,
   });
   @override
   Widget build(BuildContext context) {
@@ -44,10 +42,7 @@ class ContactUsCard extends StatelessWidget {
   }
 
   Future<void> _launchUrl() async {
-    Uri uri = Uri(
-      scheme: scheme,
-      path: url,
-    );
+    Uri uri = Uri.parse(url);
     if (!await launchUrl(uri)) {
       throw Exception('Could not launch $url');
     }

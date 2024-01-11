@@ -8,7 +8,6 @@ class DioHelper {
     dio = Dio(
       BaseOptions(
         baseUrl: 'https://wafaaalfurat.store/api/',
-        receiveDataWhenStatusError: true,
       ),
     );
   }
@@ -111,7 +110,6 @@ class DioHelper {
         queryParameters: query,
       )
           .onError((error, stackTrace) {
-        print(error.toString());
         showSnackBar(
             message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
             state: SnackBarState.error,
@@ -142,4 +140,7 @@ final class EndPoints {
   static const String getAgentPoints = "agents_points";
   static const String deleteAgent = "agent/";
   static const String deleteCostumer = "costumer/";
+  static const String getBanners = "banners";
+  static const String getPosts = "posts";
+  static const String getBrands = "brands";
 }

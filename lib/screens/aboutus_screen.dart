@@ -56,20 +56,19 @@ class AboutusScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const ContactUsCard(
-                  label: "facebook",
+                  label: "Facebook",
                   color: Colors.blue,
                   iconData: FontAwesomeIcons.facebook,
                   url:
                       "https://www.facebook.com/profile.php?id=100069528553856&mibextid=ZbWKwL",
-                  scheme: "https",
                 ),
                 SizedBox(width: Get.width * 0.1),
                 const ContactUsCard(
-                    label: "whatsapp",
-                    color: Colors.green,
-                    iconData: FontAwesomeIcons.whatsapp,
-                    url: "https://wa.me/+9647851000172",
-                    scheme: "https"),
+                  label: "Whatsapp",
+                  color: Colors.green,
+                  iconData: FontAwesomeIcons.whatsapp,
+                  url: "https://wa.me/+9647851000172",
+                ),
               ],
             ),
             SizedBox(height: Get.height * 0.03),
@@ -77,20 +76,18 @@ class AboutusScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const ContactUsCard(
-                  label: "07851000172",
+                  label: "الجوال",
                   color: Colors.red,
                   iconData: Icons.phone_outlined,
-                  url: "07851000172",
-                  scheme: "tel",
+                  url: "tel:07851000172",
                 ),
                 SizedBox(width: Get.width * 0.1),
                 const ContactUsCard(
-                  label: "location",
+                  label: "العنوان",
                   color: Colors.teal,
                   iconData: FontAwesomeIcons.mapLocation,
                   url:
                       "https://maps.google.com/?cid=16064460715304373148&entry=gps",
-                  scheme: "https",
                 ),
               ],
             ),

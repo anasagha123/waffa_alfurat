@@ -62,7 +62,6 @@ class RegisterScreenController extends GetxController {
         default:
           break;
       }
-      print(response.data);
       if (response.data["message"] == "تم تسجيل الحساب") {
         Get.back();
         showSnackBar(
