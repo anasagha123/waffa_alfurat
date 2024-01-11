@@ -14,8 +14,8 @@ class DioHelper {
 
   static Future getData({
     required final String path,
-    final Map<String, dynamic> query = const {},
-    final Map<String, dynamic> data = const {},
+    final Map<String, dynamic>? query,
+    final Map<String, dynamic>? data,
   }) async {
     try {
       return await dio
@@ -99,8 +99,8 @@ class DioHelper {
 
   static Future deleteData({
     required final String path,
-    final Map<String, dynamic> data = const {},
-    final Map<String, dynamic> query = const {},
+    final Map<String, dynamic>? data,
+    final Map<String, dynamic>? query,
   }) async {
     try {
       return await dio
@@ -139,7 +139,7 @@ final class EndPoints {
   static const String getCustomerPoints = "customers_points";
   static const String getAgentPoints = "agents_points";
   static const String deleteAgent = "agent/";
-  static const String deleteCostumer = "costumer/";
+  static const String deleteCostumer = "customer/";
   static const String getBanners = "banners";
   static const String getPosts = "posts";
   static const String getBrands = "brands";

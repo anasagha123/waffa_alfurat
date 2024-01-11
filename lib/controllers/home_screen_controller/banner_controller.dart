@@ -17,7 +17,8 @@ class BannerController extends GetxController {
     Response response = await DioHelper.getData(path: EndPoints.getBanners);
 
     for (int i = 0; i < response.data.length; i++) {
-      images.add("https://wafaaalfurat.store/storage/${response.data[i]}");
+      images.add(
+          "https://wafaaalfurat.store/storage/${response.data[i]["image"]}");
     }
     isloading = false;
     update();

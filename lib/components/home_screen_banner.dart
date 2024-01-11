@@ -48,8 +48,8 @@ class _HomeScreenBannerState extends State<HomeScreenBanner> {
             children: widget.images.isNotEmpty
                 ? [
                     for (int i = 0; i < widget.images.length; i++)
-                      Image.asset(
-                        "assets/images/waffa_logo.png",
+                      Image.network(
+                        widget.images[i],
                         fit: BoxFit.fill,
                       )
                   ]

@@ -191,13 +191,16 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         for (int i = 0; i < 4; i++)
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(10),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: Get.height * 0.03),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              height: Get.height * 0.3,
+                              width: Get.width * 0.9,
                             ),
-                            height: Get.height * 0.3,
-                            width: Get.width * 0.9,
                           ),
                       ],
                     ),

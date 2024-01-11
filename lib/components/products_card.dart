@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
             height: Get.height * 0.16,
             width: Get.width * 0.45,
             child: Image.network(
-              "http://wafaaalfurat.store/storage/${product.image!}",
+              "https://wafaaalfurat.store/storage/${product.image!}",
               fit: BoxFit.cover,
             ),
           ),

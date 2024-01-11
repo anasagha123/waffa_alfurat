@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:waffat_alfurat/models/agent_model.dart';
+import 'package:waffat_alfurat/screens/%D9%90agent_detailes_screen.dart';
 
 class AgentCard extends StatelessWidget {
   final Agent agent;
@@ -27,7 +28,7 @@ class AgentCard extends StatelessWidget {
         width: Get.width * 0.9,
         child: Column(
           children: [
-            agent.image!.isEmpty
+            agent.image == null
                 ? Image.asset(
                     "assets/images/waffa_logo.png",
                     height: Get.height * 0.2,
@@ -88,7 +89,11 @@ class AgentCard extends StatelessWidget {
                               PopupMenuItem(
                                 child: TextButton(
                                   child: const Text("التفاصيل"),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(AgentDetailsScreen(
+                                      agent: agent,
+                                    ));
+                                  },
                                 ),
                               ),
                             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:waffat_alfurat/components/delete_user_dialog.dart';
 import 'package:waffat_alfurat/components/my_drawer.dart';
 import 'package:waffat_alfurat/controllers/points_controller.dart';
 import 'package:waffat_alfurat/controllers/profile_screen_controller.dart';
@@ -115,7 +116,13 @@ class ProfileScreen extends StatelessWidget {
                     minimumSize: MaterialStatePropertyAll(
                         Size(Get.width * 0.8, Get.height * 0.06)),
                   ),
-                  onPressed: controller.deleteAccount,
+                  onPressed: () {
+                    Get.dialog(
+                      Dialog(
+                        child: DeleteUserDialog(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "حذف الحساب",
                     style: Get.textTheme.bodyMedium!.copyWith(

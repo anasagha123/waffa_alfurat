@@ -15,22 +15,19 @@ class ProfileScreenController extends GetxController {
     switch (UserController.userType) {
       case UserType.agent:
         resposne = await DioHelper.deleteData(
-          path: EndPoints.deleteAgent + UserController.agent.id.toString(),
-          data: {},
+          path: "${EndPoints.deleteAgent}${UserController.agent.id}",
         );
         break;
       case UserType.customer:
         resposne = await DioHelper.deleteData(
-          path:
-              EndPoints.deleteCostumer + UserController.customer.id.toString(),
-          data: {},
+          path: "${EndPoints.deleteCostumer}${UserController.customer.id}",
         );
         break;
       default:
         throw "error user can`t be deleted";
     }
 
-    if (resposne.data["message"] == "تم حذف الحساب") {
+    if (resposne.data["message"] == "تم حذف الحساب بنجاح") {
       showSnackBar(
         message: resposne.data["message"],
         state: SnackBarState.success,
