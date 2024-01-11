@@ -19,7 +19,7 @@ class InvoiceCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade500,
-            offset: Offset(-10, 15),
+            offset: const Offset(-10, 15),
             blurRadius: 10,
           ),
         ],
