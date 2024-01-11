@@ -86,7 +86,7 @@ class MyDrawer extends StatelessWidget {
               title: "مشاركة التطبيق",
               iconData: Icons.share_outlined,
               onTap: () async {
-                Share.share('https://example.com');
+                Share.share('https://wafaaalfurat.store');
               },
             ),
             SizedBox(height: Get.height * 0.05),
