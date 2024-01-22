@@ -52,7 +52,7 @@ class InvoiceScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              "النقاط",
+                              "رصيد النقاط",
                               style: Get.textTheme.bodyLarge,
                             ),
                             const Text(":"),

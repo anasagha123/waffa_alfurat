@@ -13,12 +13,14 @@ import 'package:waffat_alfurat/screens/posts_screen.dart';
 import 'package:waffat_alfurat/screens/products_screen.dart';
 import 'package:waffat_alfurat/screens/profile_screen.dart';
 import 'package:waffat_alfurat/screens/register_screen.dart';
+import 'package:waffat_alfurat/screens/splash/splash_screen.dart';
 import 'package:waffat_alfurat/screens/user_type_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initApp();
-  runApp(const MyApp());
+  await initApp().then((value) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +31,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       locale: const Locale("ar"),
-      initialRoute:
-          UserController.userType == UserType.none ? "userType" : "home",
+      initialRoute: "splash",
       routes: {
         "home": (ctx) => HomeScreen(),
         "login": (ctx) => LoginScreen(),
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
         "products": (ctx) => ProductsScreen(),
         "gifts": (ctx) => GiftsScreen(),
         "invoice": (ctx) => InvoiceScreen(),
-        "posts": (ctx) => PostsScreen()
+        "posts": (ctx) => PostsScreen(),
+        "splash": (ctx) => SplashScreen(),
       },
       theme: ThemeData(
         fontFamily: "Cario",
@@ -62,7 +64,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-initApp() async {
+Future<void> initApp() async {
   await UserController.initSharedPrefrences();
   DioHelper.init();
 }

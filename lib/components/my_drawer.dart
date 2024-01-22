@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -68,7 +69,7 @@ class MyDrawer extends StatelessWidget {
             SizedBox(height: Get.height * 0.02),
             MyListTile(
               title: "من نحن",
-              iconData: Icons.info_outline,
+              iconData: Icons.phone_outlined,
               onTap: () {
                 Get.offAllNamed("aboutus");
               },
@@ -98,6 +99,31 @@ class MyDrawer extends StatelessWidget {
                 UserController.logOut();
               },
             ),
+            SizedBox(height: Get.height * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () async {
+                    Uri uri = Uri.parse("https://social360.agency/");
+                    if (!await launchUrl(uri)) {
+                      throw Exception(
+                          'Could not launch https://social360.agency/');
+                    }
+                  },
+                  child: Text(
+                    "Social-360",
+                    style: Get.textTheme.bodyMedium!
+                        .copyWith(color: Colors.orange.shade900),
+                  ),
+                ),
+                Text(
+                  "Powered by",
+                  style: Get.textTheme.bodyMedium!.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ],
+            )
           ],
         ),
       ),

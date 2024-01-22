@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:waffat_alfurat/components/agent_card.dart';
 import 'package:waffat_alfurat/components/brand_card.dart';
 import 'package:waffat_alfurat/components/my_drawer.dart';
 import 'package:waffat_alfurat/components/home_screen_banner.dart';
+import 'package:waffat_alfurat/components/notification_icon.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/agents_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/banner_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/brands_controller.dart';
@@ -21,16 +23,33 @@ class HomeScreen extends StatelessWidget {
       drawer: const MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-          ),
-          width: Get.width * 0.13,
-          child: Image.asset(
-            "assets/images/waffa_logo.png",
-            fit: BoxFit.cover,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.phone_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Get.offAllNamed("aboutus");
+              },
+            ),
+            SizedBox(
+              width: Get.width * 0.05,
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              width: Get.width * 0.13,
+              child: Image.asset(
+                "assets/images/waffa_logo.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
         ),
         actions: [
           Visibility(
@@ -40,19 +59,16 @@ class HomeScreen extends StatelessWidget {
                 Get.toNamed("invoice");
               },
               icon: Icon(
-                Icons.wallet_giftcard,
+                FontAwesomeIcons.fileInvoiceDollar,
                 color: Get.theme.colorScheme.onPrimary,
               ),
             ),
           ),
-          IconButton(
+          NotificationIconButton(
+            iconData: Icons.notifications_none,
             onPressed: () {
               Get.toNamed("posts");
             },
-            icon: Icon(
-              Icons.notifications_outlined,
-              color: Get.theme.colorScheme.onPrimary,
-            ),
           ),
           IconButton(
             onPressed: screenController.getData,

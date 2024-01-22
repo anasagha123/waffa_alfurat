@@ -24,6 +24,8 @@ class PointsController extends GetxController {
             "agent": UserController.agent.id,
           },
         );
+        points = response.data[0]["points"].toString();
+
         break;
       case UserType.customer:
         response = await DioHelper.postData(
@@ -32,12 +34,14 @@ class PointsController extends GetxController {
             "customer": UserController.customer.id,
           },
         );
+        points = response.data[0]["points"].toString();
 
+        break;
+      case UserType.visitor:
         break;
       default:
         throw "ERROR :: User Type error in points controller";
     }
-    points = response.data[0]["points"].toString();
 
     isloading = false;
     update();

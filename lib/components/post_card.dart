@@ -40,11 +40,13 @@ class PostCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "${post.title}",
-                    style: Get.textTheme.bodyLarge!
-                        .copyWith(fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    child: Text(
+                      "${post.title}",
+                      style: Get.textTheme.bodyLarge!
+                          .copyWith(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Text(
                     "قراءة المزيد",

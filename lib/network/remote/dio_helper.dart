@@ -4,7 +4,7 @@ import 'package:waffat_alfurat/components/snack_bar.dart';
 class DioHelper {
   static Dio? dio;
 
-  static init() {
+  static void init() {
     dio = Dio(
       BaseOptions(
         baseUrl: 'https://wafaaalfurat.store/api/',
@@ -143,4 +143,5 @@ final class EndPoints {
   static const String getBanners = "banners";
   static const String getPosts = "posts";
   static const String getBrands = "brands";
+  static const String getPostsCount = "posts/count";
 }

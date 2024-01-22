@@ -38,6 +38,8 @@ class BrandCard extends StatelessWidget {
           Text(
             "${brand.name}",
             style: Get.textTheme.bodySmall,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
