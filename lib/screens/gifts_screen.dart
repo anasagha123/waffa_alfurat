@@ -7,11 +7,11 @@ import 'package:waffat_alfurat/controllers/points_controller.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class GiftsScreen extends StatelessWidget {
-  final GiftScreenController screenController = Get.put(GiftScreenController());
-  GiftsScreen({super.key});
+  const GiftsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    GiftScreenController screenController = Get.put(GiftScreenController());
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -77,15 +77,19 @@ class GiftsScreen extends StatelessWidget {
                   child: GridView.count(
                     physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(
-                        vertical: Get.height * 0.03,
-                        horizontal: Get.width * 0.05),
+                      vertical: Get.height * 0.03,
+                      horizontal: Get.width * 0.05,
+                    ),
                     crossAxisCount: 2,
-                    childAspectRatio: 0.8,
+                    childAspectRatio: 0.7,
                     crossAxisSpacing: Get.width * 0.05,
                     mainAxisSpacing: Get.height * 0.03,
                     children: [
                       for (int i = 0; i < controller.gifts.length; i++)
-                        GiftCard(gift: controller.gifts[i])
+                        GiftCard(
+                          gift: controller.gifts[i],
+                          index: i,
+                        )
                     ],
                   ),
                 ),

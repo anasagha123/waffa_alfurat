@@ -144,4 +144,5 @@ final class EndPoints {
   static const String getPosts = "posts";
   static const String getBrands = "brands";
   static const String getPostsCount = "posts/count";
+  static const String requestGift = "gift-requests";
 }
