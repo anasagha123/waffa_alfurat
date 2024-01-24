@@ -112,7 +112,6 @@ class GiftCardController extends GetxController {
   int selectedIndex = -1;
 
   requestGift(int giftId, int index) async {
-    print("UserID: ${UserController.customer.id}, GiftID: ${giftId}");
     selectedIndex = index;
     isloading = true;
     update();
