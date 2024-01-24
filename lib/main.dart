@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         "brands": (ctx) => const BrandsScreen(),
         "agents": (ctx) => AgentsScreen(),
         "products": (ctx) => ProductsScreen(),
-        "gifts": (ctx) => GiftsScreen(),
+        "gifts": (ctx) => const GiftsScreen(),
         "invoice": (ctx) => InvoiceScreen(),
         "posts": (ctx) => PostsScreen(),
         "splash": (ctx) => SplashScreen(),

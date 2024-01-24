@@ -47,6 +47,7 @@ class GiftCard extends StatelessWidget {
           Text(
             "${gift.title}",
             style: Get.textTheme.bodySmall,
+            maxLines: 2,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: Get.height * 0.01),
@@ -111,6 +112,7 @@ class GiftCardController extends GetxController {
   int selectedIndex = -1;
 
   requestGift(int giftId, int index) async {
+    print("UserID: ${UserController.customer.id}, GiftID: ${giftId}");
     selectedIndex = index;
     isloading = true;
     update();
@@ -134,7 +136,7 @@ class GiftCardController extends GetxController {
     } else {
       showSnackBar(
         message: response.data["message"],
-        state: SnackBarState.error,
+        state: SnackBarState.warning,
       );
     }
 

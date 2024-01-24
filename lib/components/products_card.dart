@@ -36,6 +36,7 @@ class ProductCard extends StatelessWidget {
           Text(
             "${product.title}",
             style: Get.textTheme.bodySmall,
+            maxLines: 2,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: Get.height * 0.01),

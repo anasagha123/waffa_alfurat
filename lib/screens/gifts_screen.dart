@@ -81,7 +81,7 @@ class GiftsScreen extends StatelessWidget {
                       horizontal: Get.width * 0.05,
                     ),
                     crossAxisCount: 2,
-                    childAspectRatio: 0.7,
+                    childAspectRatio: 0.6,
                     crossAxisSpacing: Get.width * 0.05,
                     mainAxisSpacing: Get.height * 0.03,
                     children: [
