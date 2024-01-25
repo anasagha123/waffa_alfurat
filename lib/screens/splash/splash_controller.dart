@@ -8,12 +8,10 @@ class SplashController extends GetxController {
     if (UserController.userType == UserType.none) {
       Future.delayed(const Duration(milliseconds: 3000), () {
         Get.offAllNamed("userType");
-        print("USERTYPE SCREEN");
       });
     } else {
       Future.delayed(const Duration(milliseconds: 3000), () {
         Get.offAllNamed("home");
-        print("HOME SCREEN");
       });
     }
   }
