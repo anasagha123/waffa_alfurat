@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "366238610650",
+    "project_id": "waffa-posts-notification",
+    "storage_bucket": "waffa-posts-notification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366238610650:android:5c5e2ed8644840ac8fa1e3",
+        "android_client_info": {
+          "package_name": "com.anas.waffat_alfurat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1hYbejsRLrIC0GGy3IPGompFzuJ2bH0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

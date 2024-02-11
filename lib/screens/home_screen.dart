@@ -11,6 +11,7 @@ import 'package:waffat_alfurat/controllers/home_screen_controller/agents_control
 import 'package:waffat_alfurat/controllers/home_screen_controller/banner_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/brands_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/home_screen_controller.dart';
+import 'package:waffat_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -67,6 +68,8 @@ class HomeScreen extends StatelessWidget {
           NotificationIconButton(
             iconData: Icons.notifications_none,
             onPressed: () {
+              Get.put(PostsNotificationController()).setPostcount();
+
               Get.toNamed("posts");
             },
           ),

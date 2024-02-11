@@ -145,4 +145,5 @@ final class EndPoints {
   static const String getBrands = "brands";
   static const String getPostsCount = "posts/count";
   static const String requestGift = "gift-requests";
+  static const String postFCMToken = "fcm_token";
 }

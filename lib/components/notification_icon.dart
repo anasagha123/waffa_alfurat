@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/posts_counter_controller.dart';
+import 'package:waffat_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
 
 class NotificationIconButton extends StatelessWidget {
   final IconData iconData;
@@ -21,10 +21,10 @@ class NotificationIconButton extends StatelessWidget {
           icon: Icon(iconData),
           color: Colors.white,
         ),
-        GetBuilder<PostsCounterController>(
-          init: PostsCounterController(),
+        GetBuilder<PostsNotificationController>(
+          init: PostsNotificationController(),
           builder: (controller) => Visibility(
-            visible: !controller.isloading || controller.count != 0,
+            visible: !controller.isloading && controller.newPostsCount > 0,
             child: Positioned(
               right: 11,
               top: 11,
@@ -39,7 +39,7 @@ class NotificationIconButton extends StatelessWidget {
                   minHeight: 14,
                 ),
                 child: Text(
-                  "${controller.count}",
+                  "${controller.newPostsCount}",
                   style: const TextStyle(
                     fontSize: 8,
                     color: Colors.white,

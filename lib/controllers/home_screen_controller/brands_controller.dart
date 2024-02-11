@@ -7,8 +7,6 @@ class BrandsController extends GetxController {
   bool isloading = false;
   List<Brand> brands = [];
 
-  BrandsController();
-
   Future getBrands() async {
     isloading = true;
     update();

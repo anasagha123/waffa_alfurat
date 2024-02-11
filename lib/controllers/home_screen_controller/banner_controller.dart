@@ -6,8 +6,6 @@ class BannerController extends GetxController {
   bool isloading = false;
   List<String> images = [];
 
-  BannerController();
-
   Future getImages() async {
     isloading = true;
     update();

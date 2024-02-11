@@ -7,8 +7,6 @@ class AgentsController extends GetxController {
   bool isloading = false;
   List<Agent> agents = [];
 
-  AgentsController();
-
   Future getAgents() async {
     isloading = true;
     update();
