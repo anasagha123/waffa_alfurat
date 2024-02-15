@@ -7,13 +7,14 @@ class PostsNotificationController extends GetxController {
   int oldpostscount =
       UserController.sharedPreferences.getInt("postsCount") ?? 0;
   int newPostsCount = 0;
-  late int postscount;
+  int? postscount;
   bool isloading = false;
 
   setPostcount() {
-    UserController.sharedPreferences.setInt("postsCount", postscount);
-    oldpostscount = postscount;
+    UserController.sharedPreferences.setInt("postsCount", postscount ?? 0);
+    oldpostscount = postscount ?? 0;
     newPostsCount = 0;
+    update();
   }
 
   getNotificationCount() async {
@@ -22,8 +23,8 @@ class PostsNotificationController extends GetxController {
 
     Response response = await DioHelper.getData(path: EndPoints.getPostsCount);
     postscount = response.data;
-
-    newPostsCount = postscount - oldpostscount;
+    postscount ?? 0;
+    newPostsCount = (postscount! - oldpostscount);
 
     isloading = false;
     update();

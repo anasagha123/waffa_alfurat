@@ -19,6 +19,6 @@ class HomeScreenController extends GetxController {
     bannerController.getImages();
     agentsController.getAgents();
     brandsController.getBrands();
-    // postsNotificationController.getNotificationCount();
+    postsNotificationController.getNotificationCount();
   }
 }
