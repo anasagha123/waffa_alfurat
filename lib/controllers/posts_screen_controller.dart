@@ -18,7 +18,9 @@ class PostsScreenController extends GetxController {
     posts = [];
     Response response = await DioHelper.getData(path: EndPoints.getPosts);
 
-    for (int i = 0; i < response.data.length; i++) {
+    response.data ?? [];
+
+    for (int i = response.data.length - 1; i >= 0; i--) {
       posts.add(Post.fromJson(response.data[i]));
     }
 

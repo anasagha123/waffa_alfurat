@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: Center(
         child: Image.asset(
           "assets/images/waffa_logo.png",
-          height: 100,
+          height: 200,
         ),
       ),
     );

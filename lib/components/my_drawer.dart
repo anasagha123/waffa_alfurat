@@ -100,30 +100,30 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             SizedBox(height: Get.height * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () async {
-                    Uri uri = Uri.parse("https://social360.agency/");
-                    if (!await launchUrl(uri)) {
-                      throw Exception(
-                          'Could not launch https://social360.agency/');
-                    }
-                  },
-                  child: Text(
-                    "Social-360",
-                    style: Get.textTheme.bodyMedium!
-                        .copyWith(color: Colors.orange.shade900),
-                  ),
-                ),
-                Text(
-                  "Powered by",
-                  style: Get.textTheme.bodyMedium!.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ],
-            )
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     TextButton(
+            //       onPressed: () async {
+            //         Uri uri = Uri.parse("https://social360.agency/");
+            //         if (!await launchUrl(uri)) {
+            //           throw Exception(
+            //               'Could not launch https://social360.agency/');
+            //         }
+            //       },
+            //       child: Text(
+            //         "Social-360",
+            //         style: Get.textTheme.bodyMedium!
+            //             .copyWith(color: Colors.orange.shade900),
+            //       ),
+            //     ),
+            //     Text(
+            //       "Powered by",
+            //       style: Get.textTheme.bodyMedium!.copyWith(
+            //           color: Colors.white, fontWeight: FontWeight.bold),
+            //     ),
+            //   ],
+            // )
           ],
         ),
       ),

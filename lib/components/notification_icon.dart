@@ -24,7 +24,7 @@ class NotificationIconButton extends StatelessWidget {
         GetBuilder<PostsNotificationController>(
           init: PostsNotificationController(),
           builder: (controller) => Visibility(
-            visible: !controller.isloading && controller.newPostsCount > 0,
+            visible: controller.count > 0,
             child: Positioned(
               right: 11,
               top: 11,
@@ -39,7 +39,7 @@ class NotificationIconButton extends StatelessWidget {
                   minHeight: 14,
                 ),
                 child: Text(
-                  "${controller.newPostsCount}",
+                  "${controller.count}",
                   style: const TextStyle(
                     fontSize: 8,
                     color: Colors.white,

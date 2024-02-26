@@ -7,6 +7,8 @@ enum UserType { none, agent, customer, visitor }
 
 class UserController extends GetxController {
   static UserType userType = UserType.none;
+  static List<String> seenPosts = [];
+  static List<String> cachedPosts = [];
 
   static Agent agent = Agent();
   static Customer customer = Customer();
@@ -141,5 +143,21 @@ class UserController extends GetxController {
     UserController.removeUser();
 
     Get.offAllNamed("userType");
+  }
+
+  static setSeenPosts() {
+    sharedPreferences.setStringList("seenPosts", seenPosts);
+  }
+
+  static getSeenPosts() {
+    seenPosts = sharedPreferences.getStringList("seenPosts") ?? [];
+  }
+
+  static setPosts() {
+    sharedPreferences.setStringList("posts", cachedPosts);
+  }
+
+  static getPosts() {
+    cachedPosts = sharedPreferences.getStringList("posts") ?? [];
   }
 }

@@ -1,10 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:sqflite/sqflite.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 import 'package:waffat_alfurat/firebase_options.dart';
-// import 'package:waffat_alfurat/network/local/posts_db.dart';
 import 'package:waffat_alfurat/network/remote/dio_helper.dart';
 import 'package:waffat_alfurat/network/remote/firebase_api.dart';
 import 'package:waffat_alfurat/screens/aboutus_screen.dart';
@@ -47,7 +45,7 @@ class MyApp extends StatelessWidget {
         "brands": (ctx) => const BrandsScreen(),
         "agents": (ctx) => AgentsScreen(),
         "products": (ctx) => ProductsScreen(),
-        "gifts": (ctx) => const GiftsScreen(),
+        "gifts": (ctx) => GiftsScreen(),
         "invoice": (ctx) => InvoiceScreen(),
         "posts": (ctx) => PostsScreen(),
         "splash": (ctx) => SplashScreen(),
@@ -71,8 +69,11 @@ class MyApp extends StatelessWidget {
 
 Future<void> initApp() async {
   DioHelper.init();
-  // await PostsDB.init();
   await UserController.initSharedPrefrences();
+
+  // TODO:: init firebase at log in
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseApi().initNotifications();
+  // await FirebaseApi().initNotifications();
+  UserController.getSeenPosts();
+  UserController.getPosts();
 }

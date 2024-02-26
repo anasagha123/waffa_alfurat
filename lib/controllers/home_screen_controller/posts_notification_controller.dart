@@ -4,29 +4,35 @@ import 'package:waffat_alfurat/controllers/user_controller.dart';
 import 'package:waffat_alfurat/network/remote/dio_helper.dart';
 
 class PostsNotificationController extends GetxController {
-  int oldpostscount =
-      UserController.sharedPreferences.getInt("postsCount") ?? 0;
-  int newPostsCount = 0;
-  int? postscount;
+  List<String> posts = [];
+  int count = 0;
   bool isloading = false;
-
-  setPostcount() {
-    UserController.sharedPreferences.setInt("postsCount", postscount ?? 0);
-    oldpostscount = postscount ?? 0;
-    newPostsCount = 0;
-    update();
-  }
 
   getNotificationCount() async {
     isloading = true;
     update();
 
-    Response response = await DioHelper.getData(path: EndPoints.getPostsCount);
-    postscount = response.data;
-    postscount ?? 0;
-    newPostsCount = (postscount! - oldpostscount);
+    Response response = await DioHelper.getData(path: EndPoints.getPosts);
+    for (int i = 0; i < (response.data.length ?? 0); i++) {
+      if (!posts.contains(response.data[i]["id"].toString())) {
+        posts.add(response.data[i]["id"].toString());
+      }
+    }
+
+    count = absolute(posts.length - UserController.cachedPosts.length);
 
     isloading = false;
     update();
+  }
+}
+
+absolute(int x) {
+  switch (x) {
+    case > 0:
+      return x;
+    case < 0:
+      return -1 * x;
+    default:
+      return 0;
   }
 }

@@ -3,6 +3,7 @@ import 'package:waffat_alfurat/controllers/home_screen_controller/agents_control
 import 'package:waffat_alfurat/controllers/home_screen_controller/banner_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/brands_controller.dart';
 import 'package:waffat_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
+import 'package:waffat_alfurat/controllers/points_controller.dart';
 
 class HomeScreenController extends GetxController {
   final BannerController bannerController = Get.put(BannerController());
@@ -12,6 +13,7 @@ class HomeScreenController extends GetxController {
       Get.put(PostsNotificationController());
 
   HomeScreenController() {
+    Get.put(PointsController());
     getData();
   }
 

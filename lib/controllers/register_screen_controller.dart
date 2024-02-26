@@ -62,7 +62,7 @@ class RegisterScreenController extends GetxController {
         default:
           break;
       }
-      if (response.data["message"] == "تم تسجيل الحساب") {
+      if (response.data["message"] == " تم تسجيل الحساب انتظر موافقة الشركة") {
         Get.back();
         showSnackBar(
           message: response.data["message"],

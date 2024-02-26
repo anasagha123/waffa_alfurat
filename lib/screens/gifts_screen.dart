@@ -7,16 +7,20 @@ import 'package:waffat_alfurat/controllers/points_controller.dart';
 import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class GiftsScreen extends StatelessWidget {
-  const GiftsScreen({super.key});
+  final PointsController pointsController = Get.find();
+  final GiftScreenController giftController = Get.put(GiftScreenController());
+  GiftsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    GiftScreenController screenController = Get.put(GiftScreenController());
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: screenController.getGifts,
+            onPressed: () async {
+              giftController.getGifts();
+              pointsController.getPoints();
+            },
             icon: Icon(
               Icons.refresh_rounded,
               color: Get.theme.colorScheme.onPrimary,
@@ -27,53 +31,74 @@ class GiftsScreen extends StatelessWidget {
       drawer: const MyDrawer(),
       body: GetBuilder<GiftScreenController>(
         builder: (controller) => Visibility(
-          visible: !controller.isloading,
           replacement: Center(
-              child: CircularProgressIndicator(
-            color: Get.theme.colorScheme.primary,
-          )),
+            child: CircularProgressIndicator(
+              color: Get.theme.colorScheme.primary,
+            ),
+          ),
           child: Column(
             children: [
               Visibility(
                 visible: UserController.userType != UserType.visitor,
                 child: Container(
-                  width: Get.width * 0.9,
-                  height: Get.height * 0.1,
-                  decoration: BoxDecoration(
-                    color: Get.theme.colorScheme.primary.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: GetBuilder<PointsController>(
-                    init: PointsController(),
-                    builder: (pcontorller) => Visibility(
-                      visible: !pcontorller.isloading,
-                      replacement:
-                          const Center(child: CircularProgressIndicator()),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "رصيد النقاط",
-                            style: Get.textTheme.bodyLarge,
-                          ),
-                          const Text(":"),
-                          Text(
-                            "${pcontorller.points}",
-                            style: Get.textTheme.bodyLarge,
-                          ),
-                        ],
-                      ),
+                    width: Get.width * 0.9,
+                    height: Get.height * 0.1,
+                    decoration: BoxDecoration(
+                      color: Get.theme.colorScheme.primary.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ),
-                ),
+                    child: FutureBuilder<String>(
+                      future: pointsController.getPoints(),
+                      builder: (ctx, snapshot) {
+                        if (snapshot.hasData) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "رصيد النقاط",
+                                style: Get.textTheme.bodyLarge,
+                              ),
+                              const Text(":"),
+                              Text(
+                                pointsController.points ?? "0",
+                                style: Get.textTheme.bodyLarge,
+                              ),
+                            ],
+                          );
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      },
+                    )
+                    // Visibility(
+                    //   visible: !pointorller.isloading,
+                    //   replacement:
+                    //       const Center(child: CircularProgressIndicator()),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //     children: [
+                    //       Text(
+                    //         "رصيد النقاط",
+                    //         style: Get.textTheme.bodyLarge,
+                    //       ),
+                    //       const Text(":"),
+                    //       Text(
+                    //         pointorller.points ?? "0",
+                    //         style: Get.textTheme.bodyLarge,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    ),
               ),
               SizedBox(
                 height: UserController.userType != UserType.visitor
                     ? Get.height * 0.9
                     : Get.height * 0.7,
                 child: Visibility(
-                  visible: controller.gifts.isNotEmpty,
-                  replacement: const Center(child: Text("لا يوجد منتجات")),
+                  visible: !controller.isloading,
+                  replacement: const Center(child: CircularProgressIndicator()),
                   child: GridView.count(
                     physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(

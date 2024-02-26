@@ -7,6 +7,7 @@ import 'package:waffat_alfurat/controllers/user_controller.dart';
 import 'package:waffat_alfurat/models/agent_model.dart';
 import 'package:waffat_alfurat/models/customer_model.dart';
 import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:waffat_alfurat/network/remote/firebase_api.dart';
 
 class LoginScreenController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -40,6 +41,7 @@ class LoginScreenController extends GetxController {
               message: response.data["message"],
               state: SnackBarState.success,
             );
+            await FirebaseApi().initNotifications();
             Get.toNamed("home");
           } else {
             showSnackBar(

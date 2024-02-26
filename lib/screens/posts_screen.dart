@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waffat_alfurat/components/post_card.dart';
 import 'package:waffat_alfurat/controllers/posts_screen_controller.dart';
+import 'package:waffat_alfurat/controllers/user_controller.dart';
 
 class PostsScreen extends StatelessWidget {
   final PostsScreenController screenController =
@@ -23,14 +24,23 @@ class PostsScreen extends StatelessWidget {
       ),
       body: Center(
         child: GetBuilder<PostsScreenController>(
+          init: PostsScreenController(),
           builder: (controller) => Visibility(
             visible: !controller.isloading,
             replacement: const CircularProgressIndicator(),
-            child: ListView.builder(
-              itemBuilder: (ctx, index) => PostCard(
-                post: controller.posts[index],
+            child: Visibility(
+              visible: controller.posts.isNotEmpty,
+              replacement: const Center(
+                child: Text("لا يوجد اشعارات"),
               ),
-              itemCount: controller.posts.length,
+              child: ListView.builder(
+                itemBuilder: (ctx, index) => PostCard(
+                  post: controller.posts[index],
+                  isSeen: !UserController.seenPosts
+                      .contains(controller.posts[index].id.toString()),
+                ),
+                itemCount: controller.posts.length,
+              ),
             ),
           ),
         ),

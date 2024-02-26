@@ -7,13 +7,10 @@ class PointsController extends GetxController {
   String? points;
   bool isloading = false;
 
-  PointsController() {
-    getPoints();
-  }
-
-  getPoints() async {
+  Future<String> getPoints() async {
     isloading = true;
     update();
+    // print("POINTS-CONTROLLER-IS-LOADING :: $isloading");
     Response response = Response(requestOptions: RequestOptions());
 
     switch (UserController.userType) {
@@ -45,5 +42,7 @@ class PointsController extends GetxController {
 
     isloading = false;
     update();
+    return points ?? "0";
+    // print("POINTS-CONTROLLER-IS-LOADING :: $isloading");
   }
 }

@@ -2,18 +2,17 @@
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
 import 'package:waffat_alfurat/network/remote/dio_helper.dart';
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
+  await Future.delayed(const Duration(seconds: 1));
   Get.toNamed("posts");
-  Get.put(PostsNotificationController()).setPostcount();
 }
 
 class FirebaseApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
+  late String? fcmToken;
 
   final _androidChannel = const AndroidNotificationChannel(
     "high_importance_channel",
@@ -22,25 +21,27 @@ class FirebaseApi {
     importance: Importance.high,
   );
 
-  final _localNotifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _localNotifications =
+      FlutterLocalNotificationsPlugin();
 
-  void handleMessage(RemoteMessage? message) {
+  void handleMessage(RemoteMessage? message) async {
     if (message == null) return;
+
+    await Future.delayed(const Duration(seconds: 1));
 
     Get.toNamed("posts");
   }
 
-  // Future initLocalNotifications() async {
-  //   const iOS = DarwinInitializationSettings();
-  //   const android =
-  //       AndroidInitializationSettings("assets/images/waffa_logo.png");
-  //   const settings = InitializationSettings(android: android, iOS: iOS);
-  //   await _localNotifications.initialize(settings);
+  Future initLocalNotifications() async {
+    const iOS = DarwinInitializationSettings();
+    const android = AndroidInitializationSettings("waffa_icon.png");
+    const settings = InitializationSettings(android: android, iOS: iOS);
+    await _localNotifications.initialize(settings);
 
-  //   final platform = _localNotifications.resolvePlatformSpecificImplementation<
-  //       AndroidFlutterLocalNotificationsPlugin>();
-  //   await platform?.createNotificationChannel(_androidChannel);
-  // }
+    final platform = _localNotifications.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    await platform?.createNotificationChannel(_androidChannel);
+  }
 
   Future initPushNotifications() async {
     await FirebaseMessaging.instance
@@ -73,13 +74,13 @@ class FirebaseApi {
 
   Future<void> initNotifications() async {
     await _firebaseMessaging.requestPermission(provisional: true);
-    final FCMToken = await _firebaseMessaging.getToken();
+    fcmToken = await _firebaseMessaging.getToken();
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     initPushNotifications();
     await DioHelper.postData(
       path: EndPoints.postFCMToken,
       data: {
-        "token": FCMToken,
+        "token": fcmToken,
       },
     );
     // initLocalNotifications();
