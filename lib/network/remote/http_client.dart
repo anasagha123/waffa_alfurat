@@ -1,7 +1,7 @@
 
 import 'package:get/get_connect/http/src/http.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:waffat_alfurat/components/snack_bar.dart';
+import 'package:waffaa_alfurat/components/snack_bar.dart';
 
 class HttpClient {
   static GetHttpClient? getHttpClient;

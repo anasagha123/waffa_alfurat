@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/posts_notification_controller.dart';
 
 class NotificationIconButton extends StatelessWidget {
   final IconData iconData;

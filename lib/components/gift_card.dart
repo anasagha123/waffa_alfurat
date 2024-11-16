@@ -1,16 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:waffat_alfurat/components/snack_bar.dart';
-import 'package:waffat_alfurat/controllers/points_controller.dart';
-
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/models/gift_model.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/components/snack_bar.dart';
+import 'package:waffaa_alfurat/controllers/points_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/models/gift_model.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class GiftCard extends StatelessWidget {
   final Gift gift;
@@ -116,17 +110,17 @@ class GiftCardController extends GetxController {
     isloading = true;
     update();
 
-    Response response = await DioHelper.postData(
+    Response response = await HttpClient.postData(
       path: EndPoints.requestGift,
-      data: {
+      body: {
         "customer_id": UserController.customer.id,
         "gift_id": giftId,
       },
     );
 
-    if (response.data["message"] == "تم تسجيل طلب الهدية بنجاح") {
+    if (response.body["message"] == "تم تسجيل طلب الهدية بنجاح") {
       showSnackBar(
-        message: response.data["message"],
+        message: response.body["message"],
         state: SnackBarState.success,
       );
       PointsController pointsController = Get.find();
@@ -134,7 +128,7 @@ class GiftCardController extends GetxController {
       pointsController.getPoints();
     } else {
       showSnackBar(
-        message: response.data["message"],
+        message: response.body["message"],
         state: SnackBarState.warning,
       );
     }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/models/post_model.dart';
+import 'package:waffaa_alfurat/models/post_model.dart';
 
 class PostDetailsScreen extends StatelessWidget {
   final Post post;
+
   const PostDetailsScreen({super.key, required this.post});
 
   @override

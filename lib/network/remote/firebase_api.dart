@@ -3,7 +3,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/route_manager.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
   await Future.delayed(const Duration(seconds: 1));
@@ -77,9 +77,9 @@ class FirebaseApi {
     fcmToken = await _firebaseMessaging.getToken();
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     initPushNotifications();
-    await DioHelper.postData(
+    await HttpClient.postData(
       path: EndPoints.postFCMToken,
-      data: {
+      body: {
         "token": fcmToken,
       },
     );

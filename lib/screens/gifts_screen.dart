@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/gift_card.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/controllers/gift_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/points_controller.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/components/gift_card.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/controllers/gift_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/points_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class GiftsScreen extends StatelessWidget {
   final PointsController pointsController = Get.find();
   final GiftScreenController giftController = Get.put(GiftScreenController());
+
   GiftsScreen({super.key});
 
   @override

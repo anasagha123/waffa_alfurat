@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class SplashController extends GetxController {
   @override

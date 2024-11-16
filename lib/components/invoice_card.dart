@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/models/invoice_model.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/models/invoice_model.dart';
 
 class InvoiceCard extends StatelessWidget {
   final Invoice invoice;

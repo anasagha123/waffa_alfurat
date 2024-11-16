@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:waffat_alfurat/components/agent_card.dart';
-import 'package:waffat_alfurat/components/brand_card.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/components/home_screen_banner.dart';
-import 'package:waffat_alfurat/components/notification_icon.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/agents_controller.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/banner_controller.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/brands_controller.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/home_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/components/agent_card.dart';
+import 'package:waffaa_alfurat/components/brand_card.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/components/home_screen_banner.dart';
+import 'package:waffaa_alfurat/components/notification_icon.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/agents_controller.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/banner_controller.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/brands_controller.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/home_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeScreenController screenController = Get.put(HomeScreenController());
+
   HomeScreen({super.key});
 
   @override

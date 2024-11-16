@@ -8,6 +8,7 @@ class DefaultTextFormField2 extends StatelessWidget {
   final TextDirection textDirection;
   final TextEditingController textEditingController;
   final String? Function(String?)? validator;
+
   const DefaultTextFormField2(
       {super.key,
       required this.hintText,

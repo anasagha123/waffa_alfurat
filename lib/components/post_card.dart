@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/posts_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/models/post_model.dart';
-import 'package:waffat_alfurat/screens/post_details_screen.dart';
+import 'package:waffaa_alfurat/controllers/posts_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/models/post_model.dart';
+import 'package:waffaa_alfurat/screens/post_details_screen.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
   final bool isSeen;
   final PostsScreenController postsScreenController = Get.find();
+
   PostCard({super.key, required this.post, required this.isSeen});
 
   @override

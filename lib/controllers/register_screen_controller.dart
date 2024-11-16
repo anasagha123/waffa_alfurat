@@ -1,10 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/route_manager.dart';
-import 'package:waffat_alfurat/components/snack_bar.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/components/snack_bar.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class RegisterScreenController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -36,13 +34,13 @@ class RegisterScreenController extends GetxController {
     isloading = true;
     update();
     if (formKey.currentState!.validate()) {
-      Response response = Response(requestOptions: RequestOptions());
+      Response response = const Response();
 
       switch (UserController.userType) {
         case UserType.agent:
-          response = await DioHelper.postData(
+          response = await HttpClient.postData(
             path: EndPoints.agentRegister,
-            data: {
+            body: {
               "name": name.text,
               "phone": phone.text,
               "address": address.text,
@@ -50,9 +48,9 @@ class RegisterScreenController extends GetxController {
             },
           );
         case UserType.customer:
-          response = await DioHelper.postData(
+          response = await HttpClient.postData(
             path: EndPoints.customerRegister,
-            data: {
+            body: {
               "name": name.text,
               "phone": phone.text,
               "address": address.text,
@@ -62,15 +60,15 @@ class RegisterScreenController extends GetxController {
         default:
           break;
       }
-      if (response.data["message"] == " تم تسجيل الحساب انتظر موافقة الشركة") {
+      if (response.body["message"] == " تم تسجيل الحساب انتظر موافقة الشركة") {
         Get.back();
         showSnackBar(
-          message: response.data["message"],
+          message: response.body["message"],
           state: SnackBarState.success,
         );
       } else {
         showSnackBar(
-          message: response.data["message"],
+          message: response.body["message"],
           state: SnackBarState.error,
         );
       }

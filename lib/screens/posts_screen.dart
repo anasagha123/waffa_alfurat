@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/post_card.dart';
-import 'package:waffat_alfurat/controllers/posts_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/components/post_card.dart';
+import 'package:waffaa_alfurat/controllers/posts_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class PostsScreen extends StatelessWidget {
   final PostsScreenController screenController =
       Get.put(PostsScreenController());
+
   PostsScreen({super.key});
 
   @override

@@ -1,23 +1,23 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/firebase_options.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
-import 'package:waffat_alfurat/network/remote/firebase_api.dart';
-import 'package:waffat_alfurat/screens/aboutus_screen.dart';
-import 'package:waffat_alfurat/screens/agents_screen.dart';
-import 'package:waffat_alfurat/screens/brands_screen.dart';
-import 'package:waffat_alfurat/screens/gifts_screen.dart';
-import 'package:waffat_alfurat/screens/home_screen.dart';
-import 'package:waffat_alfurat/screens/invoice_screen.dart';
-import 'package:waffat_alfurat/screens/login_screen.dart';
-import 'package:waffat_alfurat/screens/posts_screen.dart';
-import 'package:waffat_alfurat/screens/products_screen.dart';
-import 'package:waffat_alfurat/screens/profile_screen.dart';
-import 'package:waffat_alfurat/screens/register_screen.dart';
-import 'package:waffat_alfurat/screens/splash/splash_screen.dart';
-import 'package:waffat_alfurat/screens/user_type_screen.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/firebase_options.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
+import 'package:waffaa_alfurat/screens/aboutus_screen.dart';
+import 'package:waffaa_alfurat/screens/agents_screen.dart';
+import 'package:waffaa_alfurat/screens/brands_screen.dart';
+import 'package:waffaa_alfurat/screens/gifts_screen.dart';
+import 'package:waffaa_alfurat/screens/home_screen.dart';
+import 'package:waffaa_alfurat/screens/invoice_screen.dart';
+import 'package:waffaa_alfurat/screens/login_screen.dart';
+import 'package:waffaa_alfurat/screens/posts_screen.dart';
+import 'package:waffaa_alfurat/screens/products_screen.dart';
+import 'package:waffaa_alfurat/screens/profile_screen.dart';
+import 'package:waffaa_alfurat/screens/register_screen.dart';
+import 'package:waffaa_alfurat/screens/splash/splash_screen.dart';
+import 'package:waffaa_alfurat/screens/user_type_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,12 +68,15 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> initApp() async {
-  DioHelper.init();
+  HttpClient.init();
   await UserController.initSharedPrefrences();
 
-  // TODO:: init firebase at log in
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // await FirebaseApi().initNotifications();
   UserController.getSeenPosts();
   UserController.getPosts();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }

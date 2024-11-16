@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/brand_card.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/controllers/home_screen_controller/brands_controller.dart';
+import 'package:waffaa_alfurat/components/brand_card.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/controllers/home_screen_controller/brands_controller.dart';
 
 class BrandsScreen extends StatelessWidget {
   const BrandsScreen({super.key});

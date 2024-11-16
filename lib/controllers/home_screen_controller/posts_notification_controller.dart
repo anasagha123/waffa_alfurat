@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class PostsNotificationController extends GetxController {
   List<String> posts = [];
@@ -12,10 +11,10 @@ class PostsNotificationController extends GetxController {
     isloading = true;
     update();
 
-    Response response = await DioHelper.getData(path: EndPoints.getPosts);
-    for (int i = 0; i < (response.data.length ?? 0); i++) {
-      if (!posts.contains(response.data[i]["id"].toString())) {
-        posts.add(response.data[i]["id"].toString());
+    Response response = await HttpClient.getData(path: EndPoints.getPosts);
+    for (int i = 0; i < (response.body.length ?? 0); i++) {
+      if (!posts.contains(response.body[i]["id"].toString())) {
+        posts.add(response.body[i]["id"].toString());
       }
     }
 

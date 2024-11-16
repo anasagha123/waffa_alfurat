@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class UserTypeScreen extends StatelessWidget {
   const UserTypeScreen({super.key});

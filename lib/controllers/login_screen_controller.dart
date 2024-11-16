@@ -1,13 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/route_manager.dart';
-import 'package:waffat_alfurat/components/snack_bar.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/models/agent_model.dart';
-import 'package:waffat_alfurat/models/customer_model.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
-import 'package:waffat_alfurat/network/remote/firebase_api.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/components/snack_bar.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/models/agent_model.dart';
+import 'package:waffaa_alfurat/models/customer_model.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
+import 'package:waffaa_alfurat/network/remote/firebase_api.dart';
 
 class LoginScreenController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -18,62 +16,62 @@ class LoginScreenController extends GetxController {
 
   login() async {
     isloading = true;
-    Response response = Response(requestOptions: RequestOptions());
+    Response response = const Response();
     update();
     if (formKey.currentState!.validate()) {
       switch (UserController.userType) {
         case UserType.agent:
-          response = await DioHelper.postData(
+          response = await HttpClient.postData(
             path: EndPoints.agentLogin,
-            data: {
+            body: {
               "phone": phone.text,
               "password": password.text,
             },
           );
-          if (response.data["message"] == "تم تسجيل الدخول بنجاح" &&
-              response.data["agent"]["active"] == "yes") {
-            UserController.agent = Agent.fromJson(response.data["agent"]);
+          if (response.body["message"] == "تم تسجيل الدخول بنجاح" &&
+              response.body["agent"]["active"] == "yes") {
+            UserController.agent = Agent.fromJson(response.body["agent"]);
 
             UserController.setUserType("agent");
-            UserController.setUser(response.data);
+            UserController.setUser(response.body);
 
             showSnackBar(
-              message: response.data["message"],
+              message: response.body["message"],
               state: SnackBarState.success,
             );
             await FirebaseApi().initNotifications();
             Get.toNamed("home");
           } else {
             showSnackBar(
-              message: response.data["message"],
+              message: response.body["message"],
               state: SnackBarState.error,
             );
           }
           break;
         case UserType.customer:
-          response = await DioHelper.postData(
+          response = await HttpClient.postData(
             path: EndPoints.customerLogin,
-            data: {
+            body: {
               "phone": phone.text,
               "password": password.text,
             },
           );
 
-          if (response.data["message"] == "تم تسجيل الدخول بنجاح" &&
-              response.data["customer"]["active"] == "yes") {
+          if (response.body["message"] == "تم تسجيل الدخول بنجاح" &&
+              response.body["customer"]["active"] == "yes") {
             UserController.customer =
-                Customer.fromJson(response.data["customer"]);
+                Customer.fromJson(response.body["customer"]);
             UserController.setUserType("customer");
-            UserController.setUser(response.data);
+            UserController.setUser(response.body);
 
             showSnackBar(
-              message: response.data["message"],
+              message: response.body["message"],
               state: SnackBarState.success,
             );
             Get.toNamed("home");
           } else {
             showSnackBar(
-              message: response.data["message"],
+              message: response.body["message"],
               state: SnackBarState.error,
             );
           }

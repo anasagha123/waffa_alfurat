@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/controllers/profile_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/profile_screen_controller.dart';
 
 class DeleteUserDialog extends StatelessWidget {
   final ProfileScreenController profileScreenController = Get.find();

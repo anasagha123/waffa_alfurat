@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "waffat_alfurat" "\0"
+            VALUE "FileDescription", "waffaa_alfurat" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "waffat_alfurat" "\0"
+            VALUE "InternalName", "waffaa_alfurat" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "waffat_alfurat.exe" "\0"
-            VALUE "ProductName", "waffat_alfurat" "\0"
+            VALUE "OriginalFilename", "waffaa_alfurat.exe" "\0"
+            VALUE "ProductName", "waffaa_alfurat" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

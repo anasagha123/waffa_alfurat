@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/models/product_model.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/models/product_model.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class ProductScreenController extends GetxController {
   bool isloading = false;
@@ -17,9 +16,9 @@ class ProductScreenController extends GetxController {
 
     products = [];
 
-    Response response = await DioHelper.getData(path: EndPoints.viewProducts);
-    for (int i = 0; i < response.data.length; i++) {
-      products.add(Product.fromJson(response.data[i]));
+    Response response = await HttpClient.getData(path: EndPoints.viewProducts);
+    for (int i = 0; i < response.body.length; i++) {
+      products.add(Product.fromJson(response.body[i]));
     }
 
     isloading = false;

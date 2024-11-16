@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class PointsController extends GetxController {
   String? points;
@@ -10,28 +9,27 @@ class PointsController extends GetxController {
   Future<String> getPoints() async {
     isloading = true;
     update();
-    // print("POINTS-CONTROLLER-IS-LOADING :: $isloading");
-    Response response = Response(requestOptions: RequestOptions());
+    Response response = const Response();
 
     switch (UserController.userType) {
       case UserType.agent:
-        response = await DioHelper.postData(
+        response = await HttpClient.postData(
           path: EndPoints.getAgentPoints,
-          data: {
+          body: {
             "agent": UserController.agent.id,
           },
         );
-        points = response.data[0]["points"].toString();
+        points = response.body[0]["points"].toString();
 
         break;
       case UserType.customer:
-        response = await DioHelper.postData(
+        response = await HttpClient.postData(
           path: EndPoints.getCustomerPoints,
-          data: {
+          body: {
             "customer": UserController.customer.id,
           },
         );
-        points = response.data[0]["points"].toString();
+        points = response.body[0]["points"].toString();
 
         break;
       case UserType.visitor:
@@ -43,6 +41,5 @@ class PointsController extends GetxController {
     isloading = false;
     update();
     return points ?? "0";
-    // print("POINTS-CONTROLLER-IS-LOADING :: $isloading");
   }
 }

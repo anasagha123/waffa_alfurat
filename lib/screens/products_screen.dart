@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/components/products_card.dart';
-import 'package:waffat_alfurat/controllers/product_screen_controller.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/components/products_card.dart';
+import 'package:waffaa_alfurat/controllers/product_screen_controller.dart';
 
 class ProductsScreen extends StatelessWidget {
   final ProductScreenController screenController =
       Get.put(ProductScreenController());
+
   ProductsScreen({super.key});
 
   @override

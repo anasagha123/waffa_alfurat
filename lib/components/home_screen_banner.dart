@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreenBanner extends StatefulWidget {
   final List<String> images;
+
   const HomeScreenBanner({super.key, required this.images});
 
   @override

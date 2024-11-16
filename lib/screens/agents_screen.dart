@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/agent_card.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/controllers/agents_screen_controller.dart';
+import 'package:waffaa_alfurat/components/agent_card.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/controllers/agents_screen_controller.dart';
 
 class AgentsScreen extends StatelessWidget {
   final AgentsScreenController screenController =

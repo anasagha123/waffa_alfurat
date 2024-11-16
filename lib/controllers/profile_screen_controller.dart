@@ -1,8 +1,7 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/components/snack_bar.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/components/snack_bar.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class ProfileScreenController extends GetxController {
   bool isloading = false;
@@ -11,15 +10,15 @@ class ProfileScreenController extends GetxController {
     isloading = true;
     update();
 
-    Response resposne = Response(requestOptions: RequestOptions());
+    Response resposne = const Response();
     switch (UserController.userType) {
       case UserType.agent:
-        resposne = await DioHelper.deleteData(
+        resposne = await HttpClient.deleteData(
           path: "${EndPoints.deleteAgent}${UserController.agent.id}",
         );
         break;
       case UserType.customer:
-        resposne = await DioHelper.deleteData(
+        resposne = await HttpClient.deleteData(
           path: "${EndPoints.deleteCostumer}${UserController.customer.id}",
         );
         break;
@@ -27,9 +26,9 @@ class ProfileScreenController extends GetxController {
         throw "error user can`t be deleted";
     }
 
-    if (resposne.data["message"] == "تم حذف الحساب بنجاح") {
+    if (resposne.body["message"] == "تم حذف الحساب بنجاح") {
       showSnackBar(
-        message: resposne.data["message"],
+        message: resposne.body["message"],
         state: SnackBarState.success,
       );
       UserController.logOut();

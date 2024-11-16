@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/default_form_field_2.dart';
-import 'package:waffat_alfurat/controllers/register_screen_controller.dart';
+import 'package:waffaa_alfurat/components/default_form_field_2.dart';
+import 'package:waffaa_alfurat/controllers/register_screen_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
   final screenController = Get.put(RegisterScreenController());
+
   RegisterScreen({super.key});
 
   @override

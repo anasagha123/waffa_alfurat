@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:waffat_alfurat/models/agent_model.dart';
-import 'package:waffat_alfurat/models/customer_model.dart';
+import 'package:waffaa_alfurat/models/agent_model.dart';
+import 'package:waffaa_alfurat/models/customer_model.dart';
 
 enum UserType { none, agent, customer, visitor }
 

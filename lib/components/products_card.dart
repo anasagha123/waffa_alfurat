@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/models/product_model.dart';
+import 'package:waffaa_alfurat/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/models/brand_model.dart';
+import 'package:waffaa_alfurat/models/brand_model.dart';
 
 class BrandCard extends StatelessWidget {
   final Brand brand;
+
   const BrandCard({super.key, required this.brand});
 
   @override

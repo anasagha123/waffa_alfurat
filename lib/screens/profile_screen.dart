@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:waffat_alfurat/components/delete_user_dialog.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
-import 'package:waffat_alfurat/controllers/points_controller.dart';
-import 'package:waffat_alfurat/controllers/profile_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/user_controller.dart';
+import 'package:waffaa_alfurat/components/delete_user_dialog.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/controllers/points_controller.dart';
+import 'package:waffaa_alfurat/controllers/profile_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   final ProfileScreenController screenController =

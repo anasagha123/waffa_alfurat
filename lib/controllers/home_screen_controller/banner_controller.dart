@@ -1,6 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class BannerController extends GetxController {
   bool isloading = false;
@@ -12,11 +11,11 @@ class BannerController extends GetxController {
 
     images = [];
 
-    Response response = await DioHelper.getData(path: EndPoints.getBanners);
+    Response response = await HttpClient.getData(path: EndPoints.getBanners);
 
-    for (int i = 0; i < response.data.length; i++) {
+    for (int i = 0; i < response.body.length; i++) {
       images.add(
-          "https://wafaaalfurat.store/storage/${response.data[i]["image"]}");
+          "https://wafaaalfurat.store/storage/${response.body[i]["image"]}");
     }
     isloading = false;
     update();

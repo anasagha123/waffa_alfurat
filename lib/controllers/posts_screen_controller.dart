@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:waffat_alfurat/models/post_model.dart';
-import 'package:waffat_alfurat/network/remote/dio_helper.dart';
+import 'package:get/get.dart';
+import 'package:waffaa_alfurat/models/post_model.dart';
+import 'package:waffaa_alfurat/network/remote/http_client.dart';
 
 class PostsScreenController extends GetxController {
   bool isloading = false;
@@ -16,12 +15,12 @@ class PostsScreenController extends GetxController {
     update();
 
     posts = [];
-    Response response = await DioHelper.getData(path: EndPoints.getPosts);
+    Response response = await HttpClient.getData(path: EndPoints.getPosts);
 
-    response.data ?? [];
+    response.body ?? [];
 
-    for (int i = response.data.length - 1; i >= 0; i--) {
-      posts.add(Post.fromJson(response.data[i]));
+    for (int i = response.body.length - 1; i >= 0; i--) {
+      posts.add(Post.fromJson(response.body[i]));
     }
 
     isloading = false;

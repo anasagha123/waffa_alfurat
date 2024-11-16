@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/contact_us_card.dart';
-import 'package:waffat_alfurat/components/my_drawer.dart';
+import 'package:waffaa_alfurat/components/contact_us_card.dart';
+import 'package:waffaa_alfurat/components/my_drawer.dart';
 
 class AboutusScreen extends StatelessWidget {
   const AboutusScreen({super.key});

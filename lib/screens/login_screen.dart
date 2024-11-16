@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/default_text_form_field.dart';
-import 'package:waffat_alfurat/controllers/login_screen_controller.dart';
+import 'package:waffaa_alfurat/components/default_text_form_field.dart';
+import 'package:waffaa_alfurat/controllers/login_screen_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final screenController = Get.put(LoginScreenController());
+
   LoginScreen({super.key});
 
   @override

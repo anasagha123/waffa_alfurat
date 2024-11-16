@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/components/invoice_card.dart';
-import 'package:waffat_alfurat/controllers/invoice_screen_controller.dart';
-import 'package:waffat_alfurat/controllers/points_controller.dart';
+import 'package:waffaa_alfurat/components/invoice_card.dart';
+import 'package:waffaa_alfurat/controllers/invoice_screen_controller.dart';
+import 'package:waffaa_alfurat/controllers/points_controller.dart';
 
 class InvoiceScreen extends StatelessWidget {
   final InvoiceScreenController screenController =
       Get.put(InvoiceScreenController());
+
   InvoiceScreen({super.key});
 
   @override

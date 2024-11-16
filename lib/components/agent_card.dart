@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:waffat_alfurat/models/agent_model.dart';
-import 'package:waffat_alfurat/screens/%D9%90agent_detailes_screen.dart';
+import 'package:waffaa_alfurat/models/agent_model.dart';
+import 'package:waffaa_alfurat/screens/%D9%90agent_detailes_screen.dart';
 
 class AgentCard extends StatelessWidget {
   final Agent agent;
+
   const AgentCard({super.key, required this.agent});
 
   @override

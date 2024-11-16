@@ -15,6 +15,7 @@ class ContactUsCard extends StatelessWidget {
     required this.iconData,
     required this.url,
   });
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

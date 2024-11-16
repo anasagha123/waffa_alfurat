@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waffat_alfurat/models/agent_model.dart';
+import 'package:waffaa_alfurat/models/agent_model.dart';
 
 class AgentDetailsScreen extends StatelessWidget {
   final Agent agent;
+
   const AgentDetailsScreen({super.key, required this.agent});
 
   @override
