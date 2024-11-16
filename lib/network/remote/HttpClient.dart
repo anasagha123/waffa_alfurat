@@ -1,14 +1,14 @@
-import 'package:dio/dio.dart';
+
+import 'package:get/get_connect/http/src/http.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:waffat_alfurat/components/snack_bar.dart';
 
-class DioHelper {
-  static Dio? dio;
+class HttpClient {
+  static GetHttpClient? getHttpClient;
 
   static void init() {
-    dio = Dio(
-      BaseOptions(
+    getHttpClient = GetHttpClient(
         baseUrl: 'https://wafaaalfurat.store/api/',
-      ),
     );
   }
 
@@ -18,11 +18,11 @@ class DioHelper {
     final Map<String, dynamic>? data,
   }) async {
     try {
-      return await dio
+      return await getHttpClient
           ?.get(
         path,
-        queryParameters: query,
-        data: data,
+        query: query,
+        // : data,
       )
           .onError((error, stackTrace) {
         showSnackBar(
@@ -30,7 +30,7 @@ class DioHelper {
           message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
           state: SnackBarState.error,
         );
-        return Response(requestOptions: RequestOptions());
+        return const Response();
       });
     } catch (_) {
       showSnackBar(
@@ -43,22 +43,22 @@ class DioHelper {
 
   static Future postData({
     required final String path,
-    required final Map<String, dynamic> data,
+    required final Map<String, dynamic> body,
     final Map<String, dynamic> query = const {},
   }) async {
     try {
-      return await dio
+      return await getHttpClient
           ?.post(
         path,
-        data: data,
-        queryParameters: query,
+        body: body,
+        query: query,
       )
           .onError((error, stackTrace) {
         showSnackBar(
             message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
             state: SnackBarState.error,
             title: "خطأ");
-        return Response(requestOptions: RequestOptions());
+        return const Response();
       });
     } catch (_) {
       showSnackBar(
@@ -71,22 +71,22 @@ class DioHelper {
 
   static Future putData({
     required final String path,
-    final Map<String, dynamic> data = const {},
+    final Map<String, dynamic> body = const {},
     final Map<String, dynamic> query = const {},
   }) async {
     try {
-      return await dio
+      return await getHttpClient
           ?.put(
         path,
-        data: data,
-        queryParameters: query,
+        body: body,
+        query: query,
       )
           .onError((error, stackTrace) {
         showSnackBar(
             message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
             state: SnackBarState.error,
             title: "خطأ");
-        return Response(requestOptions: RequestOptions());
+        return const Response();
       });
     } catch (_) {
       showSnackBar(
@@ -103,18 +103,18 @@ class DioHelper {
     final Map<String, dynamic>? query,
   }) async {
     try {
-      return await dio
+      return await getHttpClient
           ?.delete(
         path,
-        data: data,
-        queryParameters: query,
+        // bod: data,
+        query: query,
       )
           .onError((error, stackTrace) {
         showSnackBar(
             message: "حدث خطأ في الاتصال الرجاء اعادة المحاولة",
             state: SnackBarState.error,
             title: "خطأ");
-        return Response(requestOptions: RequestOptions());
+        return const Response();
       });
     } catch (_) {
       showSnackBar(
